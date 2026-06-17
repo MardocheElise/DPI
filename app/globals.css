@@ -1,26 +1,296 @@
+/* Route: app/globals.css — Styles globaux PinHome (Tailwind v4) */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap');
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* ─── Thème PinHome ─────────────────────────────────────────────── */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Palette sémantique (tes tokens d'origine) */
+  --color-teal-primary:   #0d9488;
+  --color-teal-dark:      #0f766e;
+  --color-teal-darker:    #115e59;
+  --color-teal-light:     #99f6e4;
+  --color-teal-bg:        #f0fdfa;
+  --color-sidebar-bg:     #0f766e;
+  --color-yellow-accent:  #fbbf24;
+  --color-surface:        #ffffff;
+  --color-surface-2:      #f8fafc;
+  --color-text-primary:   #0f172a;
+  --color-text-secondary: #64748b;
+  --color-text-muted:     #94a3b8;
+  --color-success:        #10b981;
+  --color-warning:        #f59e0b;
+  --color-danger:         #ef4444;
+  --color-info:           #3b82f6;
+
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+
+  /* ─── Tokens shadcn (REQUIS par components/ui/*) ─────────────── */
+  --color-background:            #f0fdfa;
+  --color-foreground:            #0f172a;
+  --color-card:                  #ffffff;
+  --color-card-foreground:       #0f172a;
+  --color-popover:               #ffffff; /* ← corrige le menu transparent */
+  --color-popover-foreground:    #0f172a;
+  --color-primary:               #0d9488;
+  --color-primary-foreground:    #ffffff;
+  --color-secondary:             #ccfbf1;
+  --color-secondary-foreground:  #0f766e;
+  --color-muted:                 #f1f5f9;
+  --color-muted-foreground:      #64748b;
+  --color-accent:                #ccfbf1; /* ← survol des items de select/menu */
+  --color-accent-foreground:     #0f766e;
+  --color-destructive:           #ef4444;
+  --color-destructive-foreground:#ffffff;
+  --color-border:                #e2e8f0;
+  --color-input:                 #e2e8f0;
+  --color-ring:                  #0d9488;
+
+  /* ─── Tokens de marque (composants accueil / form / profil) ──── */
+  --color-brand-teal:       #0d9488;
+  --color-brand-teal-deep:  #0f766e;
+  --color-brand-mint:       #5eead4;
+  --color-brand-mint-soft:  #ccfbf1;
+  --color-brand-sky:        #f0fdfa;
+  --color-brand-sky-soft:   #cbeef0;
+  --color-brand-yellow:     #fbbf24;
+  --color-brand-pink:       #f9a8d4;
+  --color-brand-pink-deep:  #be185d;
+  --color-brand-coral:      #ef4444;
+  --color-brand-indigo:     #6366f1;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ─── Reset & base ──────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: #f0fdfa;
+  color: #0f172a;
+  -webkit-font-smoothing: antialiased;
 }
+
+/* ─── Composants réutilisables ──────────────────────────────────── */
+
+/* Sidebar nav item */
+.sidebar-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.625rem 1rem;
+  border-radius: 0.75rem;
+  color: #99f6e4;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.sidebar-nav-item:hover {
+  background-color: rgba(255,255,255,0.1);
+}
+.sidebar-nav-item.active {
+  background-color: rgba(255,255,255,0.2);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* Card */
+.card {
+  background-color: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.06);
+  border: 1px solid #f1f5f9;
+  padding: 1.5rem;
+}
+
+/* Badges */
+.badge-approved {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.625rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background-color: #d1fae5;
+  color: #065f46;
+}
+.badge-pending {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.625rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background-color: #fef3c7;
+  color: #92400e;
+}
+.badge-danger {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.625rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+.badge-info {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.625rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+/* Input */
+.input-field {
+  width: 100%;
+  padding: 0.625rem 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid #e2e8f0;
+  font-size: 0.875rem;
+  background-color: #ffffff;
+  outline: none;
+  transition: all 0.2s;
+}
+.input-field:focus {
+  border-color: transparent;
+  box-shadow: 0 0 0 2px #2dd4bf;
+}
+
+/* Buttons */
+.btn-primary {
+  padding: 0.625rem 1.25rem;
+  background-color: #0d9488;
+  color: #ffffff;
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+.btn-primary:hover {
+  background-color: #0f766e;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.btn-secondary {
+  padding: 0.625rem 1.25rem;
+  background-color: #ffffff;
+  color: #334155;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-secondary:hover {
+  background-color: #f8fafc;
+}
+
+.btn-yellow {
+  padding: 0.625rem 1.25rem;
+  background-color: #fbbf24;
+  color: #ffffff;
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+.btn-yellow:hover {
+  background-color: #f59e0b;
+}
+
+/* Section title */
+.section-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1rem;
+}
+
+/* ─── Module Caisse (routes /caisse/*) ──────────────────────────── */
+
+/* En-tête de page : bandeau doux + pastille d'icône teal */
+.caisse-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border-radius: 1rem;
+  background-color: #ccfbf1;          /* secondary mint */
+  border: 1px solid #e2e8f0;
+}
+.caisse-header__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 0.75rem;
+  background-color: rgba(13,148,136,0.12);
+  color: #0d9488;
+  flex-shrink: 0;
+}
+
+/* Ligne d'en-tête de tableau */
+.caisse-thead {
+  background-color: #f8fafc;          /* surface-2 */
+}
+.caisse-thead th {
+  color: #0f172a;
+  font-weight: 600;
+}
+
+/* Badge neutre (manquait dans la palette) */
+.badge-neutral {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.625rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background-color: #f1f5f9;
+  color: #475569;
+}
+
+/* Onglets de sous-navigation du module Caisse */
+.caisse-tab {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1rem;
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #64748b;
+  transition: all 0.2s;
+}
+.caisse-tab:hover {
+  background-color: #f1f5f9;
+  color: #0f172a;
+}
+.caisse-tab.active {
+  background-color: #0d9488;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* ─── Scrollbar ────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
