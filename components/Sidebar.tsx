@@ -6,14 +6,9 @@ import { usePathname } from "next/navigation";
 import {
   Home,
   Users,
-  FileText,
-  Calendar,
-  FlaskConical,
-  Shield,
   LogOut,
   ChevronRight,
   Activity,
-  ClipboardList,
   PanelLeftClose,
   PanelLeftOpen,
   Stethoscope,
@@ -42,135 +37,155 @@ type NavItem =
   | { href: string; label: string; icon: React.ElementType; children: NavChild[] };
 
 const navItems: NavItem[] = [
-  { href: "/", label: "Accueil", icon: Home },
-  {
-    href: "/accueil/patients",
-    label: "Bureau des Entrées",
-    icon: DoorOpen,
-    children: [
-      {
-        href: "/accueil/patients",
-        label: "Liste Patients",
-        icon: UserPlus,
-      },
-      {
-        href: "/accueil/paiements",
-        label: "Liste des Paiements",
-        icon: Receipt,
-      },
-      {
-        href: "/accueil/referencement-interne",
-        label: "Référencement interne",
-        icon: Building2,
-      },
-      {
-        href: "/accueil/referencement-externe",
-        label: "Hospitalisation externe",
-        icon: Ambulance,
-      },
-    ],
-  },
-  {
-    href: "/caisse/paiement-en-attente",
-    label: "Caisse",
-    icon: Wallet,
-    children: [
-      {
-        href: "/caisse/paiement-en-attente",
-        label: "Paiement en attente",
-        icon: Clock3,
-      },
-      {
-        href: "/caisse/paiement-regle",
-        label: "Paiement réglé",
-        icon: CircleCheckBig,
-      },
-      {
-        href: "/caisse/bilan",
-        label: "Bilan Caisse",
-        icon: BarChart3,
-      },
-      {
-        href: "/caisse/vue-caissier",
-        label: "Vue caissier",
-        icon: UserRound,
-      },
-    ],
-  },
-  {
-    href: "/Gestion_administrative",
-    label: "Gestion Administrative",
-    icon: ClipboardList,
-    children: [
-      { href: "/Gestion_administrative/admission", label: "Admission patient", icon: Users },
-      { href: "/Gestion_administrative/profil_patient", label: "Profil patient", icon: FileText },
-      { href: "/Gestion_administrative/hospitalisation", label: "Hospitalisation", icon: Calendar },
-    ],
-  },
+{ href: "/", label: "Accueil", icon: Home },
+{
+  href: "/accueil/patients",
+  label: "Bureau des Entrées",
+  icon: DoorOpen,
+  children: [
+    {
+      href: "/accueil/patients",
+      label: "Liste Patients",
+      icon: UserPlus,
+    },
+    {
+      href: "/accueil/paiements",
+      label: "Liste des Paiements",
+      icon: Receipt,
+    },
+    {
+      href: "/accueil/referencement-interne",
+      label: "Référencement interne",
+      icon: Building2,
+    },
+    {
+      href: "/accueil/referencement-externe",
+      label: "Hospitalisation externe",
+      icon: Ambulance,
+    },
+  ],
+},
+{
+  href: "/caisse/paiement-en-attente",
+  label: "Caisse",
+  icon: Wallet,
+  children: [
+    {
+      href: "/caisse/paiement-en-attente",
+      label: "Paiement en attente",
+      icon: Clock3,
+    },
+    {
+      href: "/caisse/paiement-regle",
+      label: "Paiement réglé",
+      icon: CircleCheckBig,
+    },
+    {
+      href: "/caisse/bilan",
+      label: "Bilan Caisse",
+      icon: BarChart3,
+    },
+    {
+      href: "/caisse/vue-caissier",
+      label: "Vue caissier",
+      icon: UserRound,
+    },
+  ],
+},
+{
+  href: "/infirmerie",
+  label: "Infirmerie",
+  icon: Stethoscope,
+  children: [
+    {
+      href: "/infirmerie",
+      label: "Patients en attente",
+      icon: Users,
+    },
+    {
+      href: "/infirmerie/patient-deja-recu",
+      label: "Patients déjà reçu",
+      icon: ClipboardCheck,
+    },
+  ],
+},
+{
+  href: "/medecine-generale/patient-a-consulter",
+  label: "Medecine Génerale",
+  icon: Stethoscope,
+  children: [
+    {
+      href: "/medecine-generale/patient-a-consulter",
+      label: "Patients à consulter",
+      icon: Users,
+    },
+    {
+      href: "/medecine-generale/patient-deja-consulter",
+      label: "Patients déjà consulter",
+      icon: ClipboardCheck,
+    },],
+},
+{
+  href: "/dessier-medical/",
+  label: "Dossiers Médicale",
+  icon: Stethoscope,
+  children: [
+    // {
+    //   href: "/medecine-generale/patient-a-consulter",
+    //   label: "Patients à consulter",
+    //   icon: Users,
+    // },
+    // {
+    //   href: "/medecine-generale/patient-deja-consulter",
+    //   label: "Patients déjà consulter",
+    //   icon: ClipboardCheck,
+    // },
+  ],
+},
+  // {
+  //   href: "/Gestion_administrative",
+  //   label: "Gestion Administrative",
+  //   icon: ClipboardList,
+  //   children: [
+  //     { href: "/Gestion_administrative/admission", label: "Admission patient", icon: Users },
+  //     { href: "/Gestion_administrative/profil_patient", label: "Profil patient", icon: FileText },
+  //     { href: "/Gestion_administrative/hospitalisation", label: "Hospitalisation", icon: Calendar },
+  //   ],
+  // },
 
-  {
-    href: "/infirmerie",
-    label: "Infirmerie",
-    icon: Stethoscope,
-    children: [
-      {
-        href: "/infirmerie",
-        label: "Patients en attente",
-        icon: Users,
-      },
-      {
-        href: "/infirmerie/patient-deja-consulte",
-        label: "Patients déjà consultés",
-        icon: ClipboardCheck,
-      },
-    ],
-  },
 
-  {
-    href: "/collaboration_team", label: "Équipe soignante", icon: Activity,
-    children: [
-      {
-        href: "/collaboration_team/view_team",
-        label: "Vue Équipe",
-        icon: Users,
-      },
-      {
-        href: "/collaboration_team/communication_interne",
-        label: "Communication",
-        icon: MessageSquare,
-      },
-      {
-        href: "/collaboration_team/reunion",
-        label: "Réunion RCP",
-        icon: CalendarCheck,
-      },
-    ]
-  },
-  { href: "/doc_tracabilite", label: "Doc & Traçabilité", icon: FileText },
-  {
-    href: "/dossier_medical",
-    label: "Dossier Médical",
-    icon: FolderOpen,
-    children: [
-      { label: "Consultation", href: "/dossier_medical/consultation", icon: Stethoscope },
-      { label: "Diagnostique", href: "/dossier_medical/diagnostique", icon: ClipboardList },
-      // { label: "Plan de Soins", href: "/dossier_medical/plan_de_soins", icon: HeartPulse },
-      { label: "Prescription Médicaments", href: "/dossier_medical/prescription_medicaments", icon: Pill },
-      { label: "Prescription Examens", href: "/dossier_medical/prescription_examen", icon: FlaskConical },
-      // { label: "Compte-rendu", href: "/dossier_medical/compte_rendu", icon: FileCheck },
-    ],
-  },
-  {
-    href: "/resultats_examen",
-    label: "Résultats Examens",
-    icon: FlaskConical,
-    children: [
-      { label: "Biologie", href: "/resultats_examen/biologie", icon: FlaskConical },
-      { label: "Imagerie", href: "/resultats_examen/imagerie", icon: ImageIcon },
-      { label: "Autres Examens", href: "/resultats_examen/autres_examens", icon: Microscope },
-    ],
-  },
-  { href: "/securite_conformite", label: "Sécurité", icon: Shield },
+  // {
+  //   href: "/collaboration_team", label: "Équipe soignante", icon: Activity,
+  //   children: [
+  //     {
+  //       href: "/collaboration_team/view_team",
+  //       label: "Vue Équipe",
+  //       icon: Users,
+  //     },
+  //     {
+  //       href: "/collaboration_team/communication_interne",
+  //       label: "Communication",
+  //       icon: MessageSquare,
+  //     },
+  //     {
+  //       href: "/collaboration_team/reunion",
+  //       label: "Réunion RCP",
+  //       icon: CalendarCheck,
+  //     },
+  //   ]
+  // },
+  // { href: "/doc_tracabilite", label: "Doc & Traçabilité", icon: FileText },
+  // {
+  //   href: "/resultats_examen",
+  //   label: "Résultats Examens",
+  //   icon: FlaskConical,
+  //   children: [
+  //     { label: "Biologie", href: "/resultats_examen/biologie", icon: FlaskConical },
+  //     { label: "Imagerie", href: "/resultats_examen/imagerie", icon: ImageIcon },
+  //     { label: "Autres Examens", href: "/resultats_examen/autres_examens", icon: Microscope },
+  //   ],
+  // },
+  // { href: "/securite_conformite", label: "Sécurité", icon: Shield },
 ];
 
 export default function Sidebar() {

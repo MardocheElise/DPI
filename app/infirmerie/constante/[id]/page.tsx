@@ -1,4 +1,3 @@
-// route: app/infirmerie/constante/[id]/page.tsx
 import { ConstanteForm } from "@/components/infirmerie/ConstanteForm"
 import { getPatientAttenteById } from "@/lib/dataInfirmerie/infirmerie"
 import { notFound } from "next/navigation"
@@ -8,7 +7,7 @@ export default async function ConstantePage({
   params: Promise<{ id: string }>
 }) {
   const { id } = await params
-  const patient = getPatientAttenteById(id) // TODO: remplacer par un fetch API
+  const patient = getPatientAttenteById(id)
   if (!patient) notFound()
 
   return (

@@ -369,7 +369,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { formatFCFA } from "@/lib/format";
+import { formatFCFA } from "@/lib/data/format";
 import { ASSURANCES, SERVICES, TYPES_PRESTATION } from "@/lib/dataPatients/paiementOption";
 import { Patient } from "@/lib/dataPatients/patient";
 interface LignePrestation {

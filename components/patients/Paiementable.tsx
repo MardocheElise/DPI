@@ -17,8 +17,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { cn } from "@/lib/utils";
-import { formatFCFA, formatDateTimeFr } from "@/lib/format";
+import { cn } from "@/lib/data/utils";
+import { formatFCFA, formatDateTimeFr } from "@/lib/data/format";
 import { FichePaiement, StatutFiche } from "@/lib/dataPatients/fichePaiement";
 import { SortableHeader, SortDir } from "./Sortable-header";
 type ColonneTri =

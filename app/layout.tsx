@@ -78,7 +78,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Sidebar from "@/components/Sidebar";
 import { Geist } from "next/font/google";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/data/utils";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 

@@ -3,7 +3,7 @@
 
 import { ArrowDown, ArrowUp, ArrowUpDown } from "lucide-react"
 import { TableHead } from "@/components/ui/table"
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/data/utils"
 
 export type SortDirection = "asc" | "desc" | null
 

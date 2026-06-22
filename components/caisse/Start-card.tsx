@@ -2,7 +2,7 @@
 // Route concernée : composant partagé — utilisé par /caisse/vue-caissier et /caisse/bilan
 // Carte chiffre-clé avec barre latérale colorée. Couleurs = tokens du globals.css.
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/data/utils";
 
 type Accent = "teal" | "green" | "coral" | "yellow";
 

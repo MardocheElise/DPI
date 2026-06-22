@@ -2,7 +2,7 @@
 // Route concernée : composant partagé — utilisé par les routes /caisse/* (listes & bilan)
 // S'appuie uniquement sur les classes définies dans app/globals.css (.badge-approved, …).
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/data/utils";
 
 type Variant = "success" | "pending" | "danger" | "info" | "neutral";
 

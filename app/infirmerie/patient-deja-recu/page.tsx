@@ -1,12 +1,5 @@
-// route: app/infirmerie/patient-deja-consulte/page.tsx
-
 import { InfirmerieHeader } from "@/components/infirmerie/InfirmerieHeader";
 import { PatientsConsultesView } from "@/components/infirmerie/PatientConsulteView";
-
-/**
- * Infirmerie — Patients déjà consultés.
- * Historique des patients ayant terminé leur consultation à l'infirmerie.
- */
 export default function PatientDejaConsultePage() {
   return (
     <div className="space-y-5 p-4 sm:p-6">

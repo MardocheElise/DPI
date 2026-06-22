@@ -24,8 +24,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { cn } from "@/lib/utils";
-import { calculerAge, formatDateFr, formatDateTimeFr } from "@/lib/format";
+import { cn } from "@/lib/data/utils";
+import { calculerAge, formatDateFr, formatDateTimeFr } from "@/lib/data/format";
 import { Patient } from "@/lib/dataPatients/patient";
 import { SortableHeader, SortDir } from "./Sortable-header";
 import { useRouter } from "next/navigation";

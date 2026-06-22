@@ -19,7 +19,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { calculerAge, formatDateFr, formatDateTimeFr } from "@/lib/format";
+import { calculerAge, formatDateFr, formatDateTimeFr } from "@/lib/data/format";
 import { Patient, PATIENTS } from "@/lib/dataPatients/patient";
 
 // Palette d'accents (réutilise les couleurs des icônes d'action)
